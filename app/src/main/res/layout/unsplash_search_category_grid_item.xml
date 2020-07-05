@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_margin="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        xmlns:tools="http://schemas.android.com/tools">
+    <ImageView
+            android:id="@+id/unsplash_search_category_image"
+            tools:background="@color/colorAccent"
+            android:background="@color/colorAccent"
+            tools:layout_height="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/unsplash_search_category_tv_title"
+            android:layout_centerInParent="true"
+            tools:text="Technology"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</RelativeLayout>

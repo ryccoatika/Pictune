@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+            android:id="@+id/nav_home"
+            android:title="@string/text_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            app:showAsAction="ifRoom"/>
+    <item
+            android:id="@+id/nav_search"
+            android:title="@string/text_search"
+            android:icon="@drawable/ic_search_white_24dp"
+            app:showAsAction="ifRoom"/>
+    <item
+            android:id="@+id/nav_favorite"
+            android:title="@string/text_favorite"
+            android:icon="@drawable/ic_favorite_black_24dp"
+            app:showAsAction="ifRoom"/>
+    <item
+            android:id="@+id/nav_settings"
+            android:title="@string/text_settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            app:showAsAction="ifRoom"/>
+</menu>

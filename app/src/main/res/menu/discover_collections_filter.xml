@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/collections_mode"
+          android:title="@string/text_filter"
+          android:icon="@drawable/ic_sort_white_24dp"
+          android:contentDescription="@string/text_filter"
+          app:showAsAction="always">
+        <menu>
+            <item android:id="@+id/collection_all"
+                  android:title="@string/text_all_collections"/>
+            <item android:id="@+id/collection_featured"
+                  android:title="@string/text_featured_collections"/>
+        </menu>
+    </item>
+</menu>

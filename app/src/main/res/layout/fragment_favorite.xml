@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".favorite.FavoriteFragment">
+    <ProgressBar
+            android:id="@+id/favorite_pb"
+            android:elevation="8dp"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/favorite_tv_warning"
+            android:layout_centerInParent="true"
+            tools:text="No result found"
+            android:textSize="18sp"
+            android:elevation="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/favorite_swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favorite_rv"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:spanCount="2"
+                tools:listitem="@layout/unsplash_photos_grid_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</RelativeLayout>

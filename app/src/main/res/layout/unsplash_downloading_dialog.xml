@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:tools="http://schemas.android.com/tools">
+    <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/unsplash_downloading_tv"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="8dp"
+            android:textSize="20sp"
+            tools:text="Downloading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_margin="8dp"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/unsplash_downloading_tv_progress"
+            android:layout_below="@id/unsplash_downloading_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="0"
+            android:id="@+id/unsplash_downloading_pb"/>
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/unsplash_downloading_tv"
+            android:layout_margin="8dp"
+            tools:text="0%"
+            android:id="@+id/unsplash_downloading_tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+            android:id="@+id/unsplash_downloading_btn_cancel"
+            android:text="@string/text_cancel"
+            android:layout_margin="8dp"
+            android:layout_below="@id/unsplash_downloading_pb"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</RelativeLayout>

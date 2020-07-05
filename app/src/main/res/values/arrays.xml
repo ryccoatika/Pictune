@@ -1,0 +1,144 @@
+<resources>
+    <!--  Search Filter  -->
+    <string-array name="order_by_entries">
+        <item>Relevant</item>
+        <item>Latest</item>
+    </string-array>
+
+    <string-array name="order_by_values">
+        <item>relevant</item>
+        <item>latest</item>
+    </string-array>
+
+    <string-array name="content_filter_entries">
+        <item>Low</item>
+        <item>High</item>
+    </string-array>
+
+    <string-array name="content_filter_values">
+        <item>low</item>
+        <item>high</item>
+    </string-array>
+
+    <string-array name="color_entries">
+        <item>Any</item>
+        <item>Black and White</item>
+        <item>Another tone</item>
+    </string-array>
+
+    <string-array name="color_values">
+        <item>@null</item>
+        <item>black_and_white</item>
+        <item>another tone</item>
+    </string-array>
+
+    <string-array name="color_tone_values">
+        <item>black</item>
+        <item>white</item>
+        <item>yellow</item>
+        <item>orange</item>
+        <item>red</item>
+        <item>purple</item>
+        <item>magenta</item>
+        <item>green</item>
+        <item>teal</item>
+        <item>blue</item>
+    </string-array>
+
+    <string-array name="orientation_entries">
+        <item>Any</item>
+        <item>Landscape</item>
+        <item>Portrait</item>
+        <item>Squarish</item>
+    </string-array>
+
+    <string-array name="orientation_values">
+        <item>@null</item>
+        <item>landscape</item>
+        <item>portrait</item>
+        <item>squarish</item>
+    </string-array>
+
+    <!--  Categories  -->
+    <string-array name="category_entries">
+        <item>Airplane</item>
+        <item>Animal</item>
+        <item>Car</item>
+        <item>Classic</item>
+        <item>Drawing</item>
+        <item>Fantasy</item>
+        <item>Food</item>
+        <item>Funny</item>
+        <item>Game</item>
+        <item>Holiday</item>
+        <item>Logo</item>
+        <item>Military</item>
+        <item>Music</item>
+        <item>Nature</item>
+        <item>Pattern</item>
+        <item>People</item>
+        <item>Sport</item>
+        <item>Vehicle</item>
+    </string-array>
+
+    <!--  Category's Photo  -->
+    <integer-array name="category_values">
+        <item>@drawable/category_airplane</item>
+        <item>@drawable/category_animal</item>
+        <item>@drawable/category_car</item>
+        <item>@drawable/category_classic</item>
+        <item>@drawable/category_drawing</item>
+        <item>@drawable/category_fantasy</item>
+        <item>@drawable/category_food</item>
+        <item>@drawable/category_funny</item>
+        <item>@drawable/category_game</item>
+        <item>@drawable/category_holiday</item>
+        <item>@drawable/category_logo</item>
+        <item>@drawable/category_military</item>
+        <item>@drawable/category_music</item>
+        <item>@drawable/category_nature</item>
+        <item>@drawable/category_pattern</item>
+        <item>@drawable/category_people</item>
+        <item>@drawable/category_sport</item>
+        <item>@drawable/category_vehicle</item>
+    </integer-array>
+
+    <!-- Auto Wallpaper Preference -->
+    <string-array name="mode_entries">
+        <item>Unsplash - Random</item>
+        <item>Photo of the day - Astronomy (NASA)</item>
+        <item>Photo of the day - Bing</item>
+        <item>Photo of the day - National Geographic</item>
+    </string-array>
+
+    <string-array name="mode_values">
+        <item>unsplash</item>
+        <item>nasa</item>
+        <item>bing</item>
+        <item>ngo</item>
+    </string-array>
+
+    <string-array name="interval_entries">
+        <item>Minute</item>
+        <item>Hour</item>
+        <item>Day</item>
+    </string-array>
+
+    <string-array name="interval_values">
+        <item>minute</item>
+        <item>hour</item>
+        <item>day</item>
+    </string-array>
+
+    <string-array name="screen_entries">
+        <item>Both</item>
+        <item>Home Screen</item>
+        <item>Lock Screen</item>
+    </string-array>
+
+    <string-array name="screen_values">
+        <item>both</item>
+        <item>home_screen</item>
+        <item>lock_screen</item>
+    </string-array>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".search.category.UnsplashCategoryActivity">
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/unsplash_category_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/unsplash_category_toolbar"
+                style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
+                app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+                app:title="@string/app_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/unsplash_category_app_bar"
+            android:id="@+id/unsplash_category_rv"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:spanCount="2"
+            tools:listitem="@layout/unsplash_photos_grid_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    <ProgressBar
+            android:id="@+id/unsplash_category_pb"
+            android:elevation="8dp"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</RelativeLayout>

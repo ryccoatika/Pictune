@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:tools="http://schemas.android.com/tools">
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/unsplash_user_item_image"
+            tools:src="@color/colorAccent"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
+    <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/unsplash_user_item_tv_name"
+            android:layout_toEndOf="@id/unsplash_user_item_image"
+            tools:text="Rycco Atika"
+            android:textSize="20sp"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/unsplash_user_item_tv_username"
+            android:layout_toEndOf="@id/unsplash_user_item_image"
+            android:layout_below="@id/unsplash_user_item_tv_name"
+            tools:text="\@arycco16"
+            android:textSize="16sp"
+            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</RelativeLayout>

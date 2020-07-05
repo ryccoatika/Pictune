@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/home_navigation"
+            app:startDestination="@id/nav_home">
+
+    <fragment
+            android:id="@+id/nav_home"
+            android:name="com.ryccoatika.pictune.HomeDiscoverFragment"
+            android:label="fragment_home_discover"
+            tools:layout="@layout/fragment_home_discover"/>
+    <fragment
+            android:id="@+id/nav_search"
+            android:name="com.ryccoatika.pictune.search.UnsplashSearchFragment"
+            android:label="fragment_unsplash_search"
+            tools:layout="@layout/fragment_unsplash_search"/>
+    <fragment
+            android:id="@+id/nav_favorite"
+            android:name="com.ryccoatika.pictune.favorite.FavoriteFragment"
+            android:label="fragment_favorite"
+            tools:layout="@layout/fragment_favorite"/>
+    <fragment
+            android:id="@+id/nav_settings"
+            android:name="com.ryccoatika.pictune.settings.SettingsFragment"
+            android:label="fragment_settings"
+            tools:layout="@layout/fragment_settings"/>
+</navigation>
