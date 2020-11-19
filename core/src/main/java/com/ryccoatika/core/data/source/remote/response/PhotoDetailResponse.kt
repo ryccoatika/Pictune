@@ -40,7 +40,7 @@ data class PhotoDetailResponse(
     @SerializedName("tags")
     val tags: List<TagResponse>? = null,
     @SerializedName("related_collections")
-    val relatedCollectionResponses: List<RelatedCollectionResponse>? = null,
+    val relatedCollectionResponse: List<RelatedCollectionResponse>? = null,
     @SerializedName("views")
     val views: Int? = null,
     @SerializedName("downloads")
