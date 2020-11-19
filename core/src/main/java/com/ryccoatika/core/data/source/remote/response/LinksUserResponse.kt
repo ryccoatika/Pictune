@@ -2,7 +2,7 @@ package com.ryccoatika.core.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class LinkUserResponse (
+data class LinksUserResponse (
     @SerializedName("self")
     val self: String? = null,
     @SerializedName("html")
