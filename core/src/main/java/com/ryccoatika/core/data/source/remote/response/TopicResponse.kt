@@ -24,7 +24,7 @@ data class TopicResponse(
     @SerializedName("total_photos")
     val totalPhotos: Int? = null,
     @SerializedName("links")
-    val links: LinkTopicResponse? = null,
+    val links: LinksTopicResponse? = null,
     @SerializedName("status")
     val status: String? = null,
     @SerializedName("owners")

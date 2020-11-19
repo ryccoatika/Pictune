@@ -24,9 +24,9 @@ data class UserResponse(
     @SerializedName("location")
     val location: String? = null,
     @SerializedName("links")
-    val links: LinkUserResponse? = null,
+    val links: LinksUserResponse? = null,
     @SerializedName("profile_image")
-    val profileImage: ProfileImage? = null,
+    val profileImageResponse: ProfileImageResponse? = null,
     @SerializedName("instagram_username")
     val instagramUsername: String? = null,
     @SerializedName("total_collection")
@@ -38,7 +38,7 @@ data class UserResponse(
     @SerializedName("accepted_tos")
     val acceptedTos: Boolean? = null
 ) {
-    data class ProfileImage(
+    data class ProfileImageResponse(
         @SerializedName("small")
         val small: String? = null,
         @SerializedName("medium")

@@ -24,9 +24,9 @@ data class PhotoMinimalResponse (
     @SerializedName("alt_description")
     val altDescription: String? = null,
     @SerializedName("urls")
-    val urls: UrlResponse? = null,
+    val urls: UrlsResponse? = null,
     @SerializedName("links")
-    val links: LinkPhotoResponse? = null,
+    val links: LinksPhotoResponse? = null,
     @SerializedName("likes")
     val likes: Int? = null,
     @SerializedName("liked_by_user")

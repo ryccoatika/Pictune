@@ -28,7 +28,7 @@ data class CollectionResponse(
     @SerializedName("tags")
     val tags: List<TagResponse>? = null,
     @SerializedName("links")
-    val links: LinkCollectionResponse? = null,
+    val links: LinksCollectionResponse? = null,
     @SerializedName("user")
     val user: UserResponse? = null,
     @SerializedName("cover_photo")
