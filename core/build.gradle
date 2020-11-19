@@ -3,6 +3,10 @@ plugins {
     id 'kotlin-android'
 }
 
+// load local properties contains api key
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
