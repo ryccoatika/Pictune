@@ -17,6 +17,10 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField "String", "UNSPLASH_ENDPOIN", '"https://api.unsplash.com"'
+        buildConfigField "String", "UNSPLASH_ACCESS_KEY", localProperties['unsplashAccessKey']
+        buildConfigField "String", "NASA_API_KEY", localProperties['nasaApiKey']
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
