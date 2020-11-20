@@ -1,7 +1,7 @@
 package com.ryccoatika.core.data.source.remote.retrofit
 
 import com.ryccoatika.core.BuildConfig
-import com.ryccoatika.core.data.source.remote.response.*
+import com.ryccoatika.core.data.source.remote.response.unsplash.*
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
