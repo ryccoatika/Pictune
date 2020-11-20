@@ -33,7 +33,7 @@ class CollectionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class LoadingViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-    inner class CollectionsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class CollectionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindData(collection: Collection) {
             with (itemView) {
                 val coverPhoto = collection.coverPhoto
@@ -58,7 +58,7 @@ class CollectionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            Type.Data.ordinal -> CollectionsViewHolder(
+            Type.Data.ordinal -> CollectionViewHolder(
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_list_collections, parent, false)
             )
@@ -80,8 +80,8 @@ class CollectionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is CollectionsViewHolder -> collections[position]?.let { holder.bindData(it) }
-            is LoadingViewHolder -> (holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams).isFullSpan = true
+            is CollectionViewHolder -> collections[position]?.let { holder.bindData(it) }
+            else -> (holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams).isFullSpan = true
         }
     }
 
