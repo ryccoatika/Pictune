@@ -1,6 +1,6 @@
 package com.ryccoatika.core.utils
 
-import com.ryccoatika.core.data.source.remote.response.*
+import com.ryccoatika.core.data.source.remote.response.unsplash.*
 import com.ryccoatika.core.domain.model.*
 import com.ryccoatika.core.domain.model.Collection
 
