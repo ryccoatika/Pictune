@@ -1,12 +1,12 @@
-package com.ryccoatika.core.data.source.remote.response
+package com.ryccoatika.core.data.source.remote.response.unsplash
 
 import com.google.gson.annotations.SerializedName
 
-data class RelatedCollectionResponse(
+data class SearchCollectionResponse(
     @SerializedName("total")
     val total: Int? = null,
-    @SerializedName("type")
-    val type: String? = null,
+    @SerializedName("total_pages")
+    val totalPages: Int? = null,
     @SerializedName("results")
     val results: List<CollectionResponse>? = null
 )

@@ -1,4 +1,4 @@
-package com.ryccoatika.core.data.source.remote.response
+package com.ryccoatika.core.data.source.remote.response.unsplash
 
 import com.google.gson.annotations.SerializedName
 
