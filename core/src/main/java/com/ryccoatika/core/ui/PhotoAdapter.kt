@@ -33,7 +33,7 @@ class PhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class LoadingViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-    inner class GridViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class PhotoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindData(photo: PhotoMinimal) {
             with (itemView) {
 
@@ -59,7 +59,7 @@ class PhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            Type.Data.ordinal -> GridViewHolder(
+            Type.Data.ordinal -> PhotoViewHolder(
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_list_photo, parent, false)
             )
@@ -81,10 +81,8 @@ class PhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is GridViewHolder -> photos[position]?.let { holder.bindData(it) }
-            else -> {
-                (holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams).isFullSpan = true
-            }
+            is PhotoViewHolder -> photos[position]?.let { holder.bindData(it) }
+            else -> (holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams).isFullSpan = true
         }
     }
 
