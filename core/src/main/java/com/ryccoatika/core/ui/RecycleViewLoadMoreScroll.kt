@@ -1,4 +1,4 @@
-package com.ryccoatika.pictune.adapter
+package com.ryccoatika.core.ui
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,7 +10,7 @@ class RecycleViewLoadMoreScroll : RecyclerView.OnScrollListener {
     private var visibleThreshold = 1
     private var totalItem = 0
     private var lastVisibleItem = 0
-    private lateinit var loadMoreListener: () -> Unit
+    private var loadMoreListener: (() -> Unit)? = null
     private val layoutManager: RecyclerView.LayoutManager
 
     constructor(layoutManager: GridLayoutManager) {
@@ -51,11 +51,12 @@ class RecycleViewLoadMoreScroll : RecyclerView.OnScrollListener {
 
 
         if (!isLoading && totalItem <= lastVisibleItem + visibleThreshold) {
-            loadMoreListener()
+            loadMoreListener?.invoke()
             isLoading = true
         }
     }
 
-    private fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int = lastVisibleItemPositions.max() ?: 0
+    private fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int =
+        lastVisibleItemPositions.maxOrNull() ?: 0
 
 }
