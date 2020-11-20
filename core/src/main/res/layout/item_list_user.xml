@@ -6,13 +6,14 @@
         android:layout_height="wrap_content"
         xmlns:tools="http://schemas.android.com/tools">
     <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/unsplash_user_item_image"
-            tools:src="@color/colorAccent"
+            android:id="@+id/user_image"
+            tools:src="?attr/colorOnBackground"
             android:layout_width="60dp"
             android:layout_height="60dp"/>
     <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/unsplash_user_item_tv_name"
-            android:layout_toEndOf="@id/unsplash_user_item_image"
+            android:id="@+id/user_name"
+            android:layout_toEndOf="@id/user_image"
+            android:textColor="?attr/colorOnBackground"
             tools:text="Rycco Atika"
             android:textSize="20sp"
             android:layout_marginTop="6dp"
@@ -20,9 +21,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/unsplash_user_item_tv_username"
-            android:layout_toEndOf="@id/unsplash_user_item_image"
-            android:layout_below="@id/unsplash_user_item_tv_name"
+            android:id="@+id/user_username"
+            android:layout_toEndOf="@id/user_image"
+            android:layout_below="@id/user_name"
+            android:textColor="?attr/colorOnBackground"
             tools:text="\@arycco16"
             android:textSize="16sp"
             android:layout_marginStart="16dp"
