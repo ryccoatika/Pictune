@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <ImageView
+                android:id="@+id/collection_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:src="?attr/colorPrimary"
+                android:adjustViewBounds="true"
+                tools:layout_height="230dp"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                tools:ignore="ContentDescription" />
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/collection_description"
+                android:textSize="15sp"
+                tools:text="Collection title"
+                android:textColor="?attr/colorOnPrimary"
+                android:ellipsize="end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/collection_count"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="8dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/collection_count"
+                tools:text="30 Photos"
+                android:textColor="?attr/colorOnPrimary"
+                android:layout_margin="16dp"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
