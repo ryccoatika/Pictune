@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.item_list_photo.view.*
 
 class PhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var photos = mutableListOf<PhotoMinimal?>()
+    private val photos = mutableListOf<PhotoMinimal?>()
     private var onClickListener: ((PhotoMinimal) -> Unit)? = null
 
     fun setPhotos(photos: List<PhotoMinimal>) {
@@ -51,7 +51,7 @@ class PhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                         .into(photo_image)
                 }
 
-                photo_image.setOnClickListener { onClickListener?.invoke(photo) }
+                setOnClickListener { onClickListener?.invoke(photo) }
             }
         }
 
