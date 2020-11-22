@@ -64,6 +64,14 @@ interface UnsplashService {
         accessKey: String = BuildConfig.UNSPLASH_ACCESS_KEY
     ): List<CollectionResponse>
 
+    @GET("/collections/{id}")
+    suspend fun getCollection(
+        @Path("id")
+        id: Int,
+        @Query("client_id")
+        accessKey: String = BuildConfig.UNSPLASH_ACCESS_KEY
+    ): CollectionResponse
+
     @GET("/collections/{id}/photos")
     suspend fun getCollectionPhotos(
         @Path("id")
