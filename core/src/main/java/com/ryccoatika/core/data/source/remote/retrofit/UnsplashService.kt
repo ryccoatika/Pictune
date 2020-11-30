@@ -1,7 +1,7 @@
 package com.ryccoatika.core.data.source.remote.retrofit
 
 import com.ryccoatika.core.BuildConfig
-import com.ryccoatika.core.data.source.remote.response.unsplash.*
+import com.ryccoatika.core.data.source.remote.response.*
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -10,7 +10,7 @@ interface UnsplashService {
 
     // ----------------------------- PHOTOS -----------------------------
     @GET("/photos")
-    suspend fun discoverPhotos(
+    suspend fun discoverPhoto(
         @Query("order_by")
         orderBy: String? = null,
         @Query("page")
@@ -24,7 +24,7 @@ interface UnsplashService {
     @GET("/photos/random")
     suspend fun getRandomPhoto(
         @Query("collections")
-        collectionId: String? = null,
+        id: String? = null,
         @Query("username")
         username: String? = null,
         @Query("query")
@@ -55,7 +55,7 @@ interface UnsplashService {
 
     // ----------------------------- COLLECTIONS -----------------------------
     @GET("/collections")
-    suspend fun discoverCollections(
+    suspend fun discoverCollection(
         @Query("page")
         page: Int? = null,
         @Query("per_page")
@@ -67,7 +67,7 @@ interface UnsplashService {
     @GET("/collections/{id}")
     suspend fun getCollection(
         @Path("id")
-        id: Int,
+        id: String,
         @Query("client_id")
         accessKey: String = BuildConfig.UNSPLASH_ACCESS_KEY
     ): CollectionResponse
@@ -75,7 +75,7 @@ interface UnsplashService {
     @GET("/collections/{id}/photos")
     suspend fun getCollectionPhotos(
         @Path("id")
-        id: Int,
+        id: String,
         @Query("page")
         page: Int? = null,
         @Query("per_page")
@@ -90,7 +90,7 @@ interface UnsplashService {
 
     @GET("/users/{username}")
     suspend fun getUser(
-        @Query("username")
+        @Path("username")
         username: String,
         @Query("client_id")
         accessKey: String = BuildConfig.UNSPLASH_ACCESS_KEY

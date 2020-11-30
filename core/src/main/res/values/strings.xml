@@ -2,4 +2,13 @@
 <resources>
     <string name="data_not_found">Data not found</string>
     <string name="something_went_wrong">Oops! Something went wrong</string>
+    <string name="username">\@%s</string>
+
+    <!-- Discover photo order -->
+    <string name="latest">Latest</string>
+    <string name="oldest">Oldest</string>
+    <string name="popular">Popular</string>
+
+    <!--  item list collection  -->
+    <string name="total_photos">%d Photos</string>
 </resources>

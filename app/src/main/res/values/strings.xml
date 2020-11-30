@@ -1,156 +1,155 @@
 <resources>
     <string name="app_name">Pictune</string>
-    <string name="auto_wallpaper_tag">pictune_auto_wallpaper</string>
+
     <string name="link_github_page">https://github.com/ryccoatika/Pictune</string>
-    <string name="link_report_bugs">https://github.com/ryccoatika/Pictune/issues</string>
     <string name="link_unsplash_page">https://unsplash.com</string>
     <string name="link_portofolio">https://ryccoatika.github.io</string>
-
-    <!-- Bottom Navigations -->
-    <string name="text_home">Home</string>
-    <string name="text_search">Search</string>
-    <string name="text_favorite">Favorite</string>
-    <string name="text_settings">Settings</string>
-
-    <!--  download filename  -->
-    <string name="download_filename">%1$s-%2$s-unsplash.jpg</string>
-
-    <!--  Home discover tab name  -->
-    <string name="tab_discover_photos">Photos</string>
-    <string name="tab_discover_collections">Collections</string>
-
-    <!--  orderby toolbar  -->
-    <string name="text_latest">Latest</string>
-    <string name="text_popular">Popular</string>
-    <string name="text_oldest">Oldest</string>
-    <string name="text_filter">Filter</string>
-    <string name="text_all_collections">All Collections</string>
-    <string name="text_featured_collections">Featured Collections</string>
-
-    <!--  Collection Activity  -->
-    <string name="text_you_might_also_like">You might also like</string>
+    <string name="link_report_bugs">https://github.com/ryccoatika/Pictune/issues</string>
+    <string name="link_referral">%s?utm_source=pictune&amp;utm_medium=referral</string>
 
     <!--  User Activity  -->
     <string name="tab_user_photos">Photos</string>
     <string name="tab_user_likes">Likes</string>
     <string name="tab_user_collections">Collections</string>
 
-    <!--  Photo Activity  -->
-    <string name="text_likes">%1$d Likes</string>
-    <string name="text_set_as_as">Set as</string>
-    <string name="text_download">Download</string>
-    <string name="text_share">Share</string>
-    <string name="text_open_link">Open Link</string>
-    <string name="text_share_link">Share link</string>
-
-    <!--  Search Activity  -->
-    <string name="tab_search_photos">Photos</string>
-    <string name="tab_search_collections">Collections</string>
-    <string name="tab_search_users">Users</string>
-    <string name="text_search_filter">Search Filter</string>
-    <string name="text_sort_by">Sort By</string>
-    <string name="text_content_filter">Content Filter</string>
-    <string name="text_cancel">Cancel</string>
-    <string name="text_apply">Apply</string>
-    <string name="text_color">Color</string>
-    <string name="text_orientation">Orientation</string>
-
     <!--  Settings  -->
-    <string name="text_auto_wallpaper">Auto Wallpaper</string>
-    <string name="text_about">About</string>
-    <string name="text_clear_cache">Clear Cache</string>
-    <string name="key_app_version">app_version</string>
-    <string name="text_app_version">App Version</string>
-    <string name="key_github_page">github_page</string>
-    <string name="text_github">Github</string>
+    <string name="general">General</string>
     <string name="key_auto_wallpaper">auto_wallpaper</string>
-    <string name="text_powered_by_unsplash">Powered By Unsplash</string>
-    <string name="key_unsplash_page">unsplash_page</string>
-    <string name="text_support_development">Support Development</string>
-    <string name="key_rate_app">rate_app</string>
-    <string name="text_rate_app_summary">Rate this app if you like. Tap to rate</string>
-    <string name="text_rate_this_app">Rate This App</string>
-    <string name="text_report_bugs">Report Bugs</string>
-    <string name="key_report_bugs">report_bugs</string>
-    <string name="text_report_bugs_summary">Report bugs or request new features</string>
-    <string name="text_author">Author</string>
-    <string name="key_author">author</string>
-    <string name="text_powered_by_summary">unsplash.com</string>
-    <string name="text_github_summary">github.com/ryccoatika/Pictune</string>
-    <string name="text_author_summary">Rycco Atika</string>
-    <string name="text_cache_total">Cache: %1.1f MB</string>
+    <string name="key_theme">theme</string>
     <string name="key_clear_cache">clear_cache</string>
-    <string name="key_clear_data">clear_data</string>
-    <string name="text_clear_data">Clear Data</string>
-    <string name="text_data_total">Datas: %1.1f MB</string>
+    <string name="auto_wallpaper">Auto Wallpaper</string>
+    <string name="theme">Theme</string>
+    <string name="clear_cache">Clear Cache</string>
+    <string name="cache_total">Cache: %s MB</string>
+
+    <string name="support_development">Support Development</string>
+    <string name="key_rate_app">rate_app</string>
+    <string name="key_report_bugs">report_bugs</string>
+    <string name="rate_this_app">Rate This App</string>
+    <string name="rate_app_summary">Rate this app if you like. Tap to rate</string>
+    <string name="report_bugs">Report Bugs</string>
+    <string name="report_bugs_summary">Report bugs or request new features</string>
+
+    <string name="about">About</string>
+    <string name="key_author">author</string>
+    <string name="key_unsplash_page">unsplash_page</string>
+    <string name="key_github_page">github_page</string>
+    <string name="key_licenses">key_licenses</string>
+    <string name="key_app_version">app_version</string>
+    <string name="author">Author</string>
+    <string name="author_summary">Rycco Atika</string>
+    <string name="powered_by_unsplash">Powered By Unsplash</string>
+    <string name="powered_by_summary">unsplash.com</string>
+    <string name="github">Github</string>
+    <string name="github_summary">github.com/ryccoatika/Pictune</string>
+    <string name="licenses">Licenses</string>
+    <string name="app_version">App Version</string>
 
     <!--  Auto Wallpaper  -->
-    <string name="text_conditions">Conditions</string>
-    <string name="text_on_wifi">On Wi-Fi</string>
-    <string name="text_on_wifi_description">Device must be connected to a Wi-Fi network</string>
-    <string name="text_charging">Charging</string>
-    <string name="text_charging_description">Device must be connected to a power source</string>
-    <string name="text_idle">Idle</string>
-    <string name="text_idle_description">Device must be inactive</string>
-    <string name="text_source">Source</string>
-    <string name="text_mode_description">Select the wallpaper source</string>
-    <string name="text_mode">Mode</string>
-    <string name="text_interval">Interval</string>
-    <string name="text_interval_description">Auto wallpaper change interval</string>
-    <string name="text_screen">Screen</string>
-    <string name="text_screen_description">Choose which screens to apply wallpaper to</string>
-    <string name="text_options">Options</string>
-    <string name="text_auto_wallpaper_applied">Auto Wallpaper Applied</string>
+    <string name="conditions">Conditions</string>
+    <string name="on_wifi">On Wi-Fi</string>
+    <string name="on_wifi_description">Device must be connected to a Wi-Fi network</string>
+    <string name="charging">Charging</string>
+    <string name="charging_description">Device must be connected to a power source</string>
+    <string name="idle">Idle</string>
+    <string name="idle_description">Device must be inactive</string>
+    <string name="source">Source</string>
+    <string name="wallpaper_source">Wallpaper Sources</string>
+    <string name="search_query">Search query</string>
+    <string name="mode_description">Select the wallpaper source</string>
+    <string name="interval">Interval</string>
+    <string name="interval_description">Auto wallpaper change interval</string>
+    <string name="screen">Screen</string>
+    <string name="screen_description">Choose which screens to apply wallpaper to</string>
+    <string name="options">Options</string>
+    <string name="setting_auto_wallpaper">Setting up auto wallpaper…</string>
+    <string name="hours">Hours</string>
+    <string name="days">Days</string>
+    <string name="minutes">Minutes</string>
+    <string name="history_title">Auto Wallpaper History</string>
+    <string name="history_description">Previously set wallpapers</string>
+    <string name="digits_only">Digits Only</string>
+    <string name="must_greater_than_15">Must be 15 minutes or above</string>
+    <string name="cant_below_1">can\'t below 1</string>
+    <string name="cannot_be_empty">Can\'t be empty</string>
+
 
     <!--  Auto Wallpaper preference keys  -->
     <string name="key_auto_wallpaper_switch">auto_wallpaper_switch</string>
-    <string name="key_mode">mode</string>
+    <string name="key_wallpaper_source">wallpaper_source</string>
+    <string name="key_search_query">search_query</string>
     <string name="key_on_wifi">on_wifi</string>
     <string name="key_on_charging">on_charging</string>
     <string name="key_on_idle">on_idle</string>
     <string name="key_interval">interval</string>
     <string name="key_apply_on_screen">on_screen</string>
-    <string name="text_interval_hours">Hours</string>
     <string name="key_interval_hours">interval_hours</string>
-    <string name="text_interval_hour_description">Change the wallpaper every custom hour</string>
-    <string name="text_interval_days">Days</string>
     <string name="key_interval_days">interval_days</string>
-    <string name="text_interval_days_description">Change the wallpaper every custom day</string>
-    <string name="text_interval_minutes">Minutes</string>
     <string name="key_interval_minutes">interval_minutes</string>
-    <string name="text_interval_minutes_description">Change the wallpaper every custom minutes</string>
-
-
-    <!--  Recycleview  -->
-    <string name="text_no_datas_found">No datas found, try again later</string>
-    <string name="text_failed_getting_data_try_refresh">Failed to getting data, Swipe down to refresh</string>
-    <string name="text_failed_getting_data">Failed getting data, try again</string>
+    <string name="key_history">key_history</string>
 
     <!--  quality download dialog  -->
-    <string name="text_small">Small</string>
-    <string name="text_medium">Medium</string>
-    <string name="text_large">Large</string>
-    <string name="text_original_size">Original Size</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+    <string name="original_size">Original Size</string>
 
-    <!--  Unsplash share download dialog  -->
-    <string name="text_wait_connection">Wait connection</string>
-    <string name="text_download_failed">Download Failed</string>
-    <string name="text_downloading">Downloading…</string>
+    <!--  Dialog  -->
+    <string name="file_exist_title">Download Again?</string>
+    <string name="file_exist_message">This photo has already been downloaded, Do you want to download this photo again?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
-    <!--  Unsplash Photo   -->
-    <string name="text_share_image">Share image</string>
-    <string name="text_open_with">Open with:</string>
-    <string name="text_share_using">Share using:</string>
-    <string name="text_downloads">%1$d Downloads</string>
-    <string name="text_views">%1$d Views</string>
-    <string name="text_web_portfolio">Web Portfolio</string>
-    <string name="text_instagram_account">Instagram Account</string>
-    <string name="text_twitter_account">Twitter Account</string>
-    <string name="text_you_dont_have_favorite">You don\'t have favorite photos yet!</string>
-    <string name="text_night_mode">Night Mode</string>
-    <string name="key_night_mode_switch">night_mode_switch</string>
-    <string name="text_are_you_sure">Are you sure?</string>
-    <string name="text_yes">Yes</string>
-    <string name="text_no">No</string>
+    <!--  Unsplash Photo Detail  -->
+    <string name="download">Download</string>
+    <string name="set_as">Set as</string>
+    <string name="open_with">Open with:</string>
+    <string name="downloads">Downloads</string>
+    <string name="downloading_photo">Downloading photo…</string>
+    <string name="views">Views</string>
+    <string name="share_using">Share using:</string>
+    <string name="published_on">Published on %s</string>
+    <string name="camera">Camera</string>
+    <string name="focal_length">Focal Length</string>
+    <string name="aperture">Aperture</string>
+    <string name="shutter_speed">Shutter Speed</string>
+    <string name="iso">ISO</string>
+    <string name="dimensions">Dimensions</string>
+    <string name="text_focal_length">%smm</string>
+    <string name="text_aperture">f/%s</string>
+    <string name="text_shutter_speed">%ss</string>
+    <string name="text_dimensions">%d x %d</string>
 
+    <!-- Menu -->
+    <!-- Bottom Navigations -->
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="favorite">Favorite</string>
+    <string name="settings">Settings</string>
+
+    <!--  collection menu  -->
+    <string name="share">Share</string>
+    <string name="open_link">Open Link</string>
+
+    <!--  history menu  -->
+    <string name="clear_all">Clear All</string>
+
+    <!--  photo menu  -->
+    <string name="share_link">Share link</string>
+    <string name="share_image">Share image</string>
+
+    <!--  photo filter  -->
+    <string name="filter">Filter</string>
+
+    <!--  search filter dialog  -->
+    <string name="search_filter">Search Filter</string>
+    <string name="order_by">Order By</string>
+    <string name="cancel">Cancel</string>
+    <string name="apply">Apply</string>
+    <string name="color">Color</string>
+    <string name="orientation">Orientation</string>
+    <string name="photos">Photos</string>
+    <string name="likes">Likes</string>
+    <string name="collections">Collections</string>
+    <string name="users">Users</string>
 </resources>

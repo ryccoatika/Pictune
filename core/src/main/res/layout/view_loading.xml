@@ -9,7 +9,7 @@
             app:lottie_fileName="loading.json"
             app:lottie_loop="true"
             app:lottie_autoPlay="true"
-            app:lottie_colorFilter="?attr/colorOnBackground"
+            app:lottie_colorFilter="?attr/colorPrimary"
             android:layout_width="200dp"
             android:layout_height="200dp"/>
 </RelativeLayout>

@@ -2,7 +2,9 @@
 <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp"
+        tools:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+        style="@style/Widget.MaterialComponents.CardView"
+        app:cardCornerRadius="10dp"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true"
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         <ImageView
-                android:id="@+id/collection_image"
+                android:id="@+id/user_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -23,23 +25,35 @@
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 tools:ignore="ContentDescription" />
+        <View
+                app:layout_constraintStart_toStartOf="@id/user_image"
+                app:layout_constraintTop_toTopOf="@id/user_image"
+                app:layout_constraintEnd_toEndOf="@id/user_image"
+                app:layout_constraintBottom_toBottomOf="@id/user_image"
+                android:background="@android:color/black"
+                android:alpha="0.2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
         <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/collection_description"
+                android:id="@+id/tv_title"
                 android:textSize="15sp"
                 tools:text="Collection title"
-                android:textColor="?attr/colorOnPrimary"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
                 android:ellipsize="end"
+                android:singleLine="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/collection_count"
+                app:layout_constraintBottom_toTopOf="@id/tv_total_photos"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="8dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
         <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/collection_count"
+                android:id="@+id/tv_total_photos"
                 tools:text="30 Photos"
-                android:textColor="?attr/colorOnPrimary"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
                 android:layout_margin="16dp"
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="parent"

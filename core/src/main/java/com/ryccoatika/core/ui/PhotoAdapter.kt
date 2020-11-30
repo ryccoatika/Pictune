@@ -5,10 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.bumptech.glide.Glide
 import com.ryccoatika.core.R
 import com.ryccoatika.core.domain.model.PhotoMinimal
-import com.ryccoatika.core.utils.BlurHashDecoder
+import com.ryccoatika.core.utils.getAspectRatio
+import com.ryccoatika.core.utils.loadBlurredImage
+import com.ryccoatika.core.utils.setHeightAsRatio
 import kotlinx.android.synthetic.main.item_list_photo.view.*
 
 class PhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -16,13 +17,15 @@ class PhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val photos = mutableListOf<PhotoMinimal?>()
     private var onClickListener: ((PhotoMinimal) -> Unit)? = null
 
-    fun setPhotos(photos: List<PhotoMinimal>) {
+    fun setPhotos(photos: List<PhotoMinimal>?) {
+        if (photos == null) return
         this.photos.clear()
         this.photos.addAll(photos)
         notifyDataSetChanged()
     }
 
-    fun insertPhotos(photos: List<PhotoMinimal>) {
+    fun insertPhotos(photos: List<PhotoMinimal>?) {
+        if (photos == null) return
         this.photos.addAll(photos)
         notifyDataSetChanged()
     }
@@ -36,20 +39,9 @@ class PhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class PhotoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindData(photo: PhotoMinimal) {
             with (itemView) {
-
-                val imageRatio = photo.height.toDouble().div(photo.width.toDouble())
-                photo_image.layoutParams.apply {
-                    height = (width.toDouble() * imageRatio).toInt()
-                    photo_image.layoutParams = this
-
-                    photo_image.setImageBitmap(
-                        BlurHashDecoder.decode(photo.blurHash, width, height)
-                    )
-
-                    Glide.with(context)
-                        .load(photo.urls.thumb)
-                        .into(photo_image)
-                }
+                photo_image.setHeightAsRatio(photo.getAspectRatio)
+                photo_image.loadBlurredImage(photo.urls.thumb, photo.color)
+                photo_image.contentDescription = photo.altDescription
 
                 setOnClickListener { onClickListener?.invoke(photo) }
             }

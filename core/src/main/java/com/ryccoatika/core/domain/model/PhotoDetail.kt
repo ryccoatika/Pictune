@@ -15,11 +15,11 @@ data class PhotoDetail(
     var links: LinksPhoto,
     var likes: Int,
     var likedByUser: Boolean,
-    var user: User,
+    var user: UserDetail,
     var exif: Exif,
     var location: Location,
     var tags: List<Tag>,
-    var relatedCollections: List<RelatedCollection>,
+    var relatedCollections: RelatedCollection,
     var views: Int,
     var downloads: Int
 ) {

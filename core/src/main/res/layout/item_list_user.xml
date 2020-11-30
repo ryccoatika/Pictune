@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_margin="8dp"
+<androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        xmlns:tools="http://schemas.android.com/tools">
-    <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/user_image"
-            tools:src="?attr/colorOnBackground"
-            android:layout_width="60dp"
-            android:layout_height="60dp"/>
-    <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/user_name"
-            android:layout_toEndOf="@id/user_image"
-            android:textColor="?attr/colorOnBackground"
-            tools:text="Rycco Atika"
-            android:textSize="20sp"
-            android:layout_marginTop="6dp"
-            android:layout_marginStart="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/user_username"
-            android:layout_toEndOf="@id/user_image"
-            android:layout_below="@id/user_name"
-            android:textColor="?attr/colorOnBackground"
-            tools:text="\@arycco16"
-            android:textSize="16sp"
-            android:layout_marginStart="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-</RelativeLayout>
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="4dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_image"
+                tools:src="?attr/colorOnBackground"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:civ_border_color="?attr/colorOnBackground"
+                app:civ_border_width="0.5dp"
+                android:layout_margin="8sp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_user_name"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/user_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_username"
+                android:textColor="?attr/colorOnBackground"
+                tools:text="Rycco Atika"
+                android:textSize="18sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_username"
+                app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+                app:layout_constraintStart_toEndOf="@id/user_image"
+                app:layout_constraintBottom_toBottomOf="@id/user_image"
+                android:textColor="?attr/colorOnBackground"
+                tools:text="\@arycco16"
+                android:textSize="15sp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

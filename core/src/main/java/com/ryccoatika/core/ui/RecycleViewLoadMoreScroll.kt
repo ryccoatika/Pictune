@@ -11,7 +11,7 @@ class RecycleViewLoadMoreScroll : RecyclerView.OnScrollListener {
     private var totalItem = 0
     private var lastVisibleItem = 0
     private var loadMoreListener: (() -> Unit)? = null
-    private val layoutManager: RecyclerView.LayoutManager
+    var layoutManager: RecyclerView.LayoutManager? = null
 
     constructor(layoutManager: GridLayoutManager) {
         this.layoutManager = layoutManager
@@ -34,25 +34,28 @@ class RecycleViewLoadMoreScroll : RecyclerView.OnScrollListener {
 
         if (dy <= 0) return
 
-        totalItem = layoutManager.itemCount
+        if (isLoading) return
 
-        when (layoutManager) {
-            is StaggeredGridLayoutManager -> {
-                val positions = layoutManager.findLastVisibleItemPositions(null)
-                lastVisibleItem = getLastVisibleItem(positions)
-            }
-            is GridLayoutManager -> {
-                lastVisibleItem = layoutManager.findLastVisibleItemPosition()
-            }
-            is LinearLayoutManager -> {
-                lastVisibleItem = layoutManager.findLastVisibleItemPosition()
-            }
-        }
+        layoutManager?.let {
+            totalItem = it.itemCount
 
+            when (it) {
+                is StaggeredGridLayoutManager -> {
+                    val positions = it.findLastVisibleItemPositions(null)
+                    lastVisibleItem = getLastVisibleItem(positions)
+                }
+                is GridLayoutManager -> {
+                    lastVisibleItem = it.findLastVisibleItemPosition()
+                }
+                is LinearLayoutManager -> {
+                    lastVisibleItem = it.findLastVisibleItemPosition()
+                }
+            }
 
-        if (!isLoading && totalItem <= lastVisibleItem + visibleThreshold) {
-            loadMoreListener?.invoke()
-            isLoading = true
+            if (totalItem <= lastVisibleItem + visibleThreshold) {
+                loadMoreListener?.invoke()
+                isLoading = true
+            }
         }
     }
 

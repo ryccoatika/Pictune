@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
-        android:layout_margin="1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp"
+        style="@style/Widget.MaterialComponents.CardView"
+        app:cardCornerRadius="10dp"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true"
+        tools:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
         <ImageView
                 android:id="@+id/photo_image"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 tools:src="?attr/colorPrimary"
                 android:adjustViewBounds="true"
                 tools:layout_height="230dp"

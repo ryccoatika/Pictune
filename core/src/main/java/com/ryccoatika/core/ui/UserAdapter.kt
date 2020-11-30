@@ -4,43 +4,42 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.ryccoatika.core.R
-import com.ryccoatika.core.domain.model.User
+import com.ryccoatika.core.domain.model.UserMinimal
+import com.ryccoatika.core.utils.loadProfilePicture
 import kotlinx.android.synthetic.main.item_list_user.view.*
 
 class UserAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val users = mutableListOf<User?>()
-    private var onClickListener: ((User) -> Unit)? = null
+    private val users = mutableListOf<UserMinimal?>()
+    private var onClickListener: ((UserMinimal) -> Unit)? = null
 
-    fun setUsers(users: List<User>) {
+    fun setUsers(users: List<UserMinimal>?) {
+        if (users == null) return
         this.users.clear()
         this.users.addAll(users)
         notifyDataSetChanged()
     }
 
-    fun insertUsers(users: List<User>) {
+    fun insertUsers(users: List<UserMinimal>?) {
+        if (users == null) return
         this.users.addAll(users)
         notifyDataSetChanged()
     }
 
-    fun setOnClickListener(listener: (User) -> Unit) {
+    fun setOnClickListener(listener: (UserMinimal) -> Unit) {
         this.onClickListener = listener
     }
 
     inner class LoadingViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     inner class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bindData(user: User) {
+        fun bindData(user: UserMinimal) {
             with(itemView) {
-                Glide.with(context)
-                    .load(user.profileImage.medium)
-                    .error(R.drawable.ic_user_black)
-                    .into(user_image)
+                user_image.loadProfilePicture(user.profileImage.medium)
 
-                user_name.text = user.name
-                user_username.text = context.getString(R.string.username, user.username)
+                tv_user_name.text = user.name
+                tv_username.text = context.getString(R.string.username, user.username)
 
                 setOnClickListener { onClickListener?.invoke(user) }
             }
@@ -74,6 +73,8 @@ class UserAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             is UserViewHolder -> users[position]?.let { holder.bindData(it) }
         }
     }
+
+    override fun getItemId(position: Int): Long = position.toLong()
 
     fun showLoading() {
         users.add(null)

@@ -1,11 +1,13 @@
 package com.ryccoatika.core.utils
 
-import com.ryccoatika.core.data.source.remote.response.unsplash.*
+import com.ryccoatika.core.data.source.local.entity.PhotoHistoryEntity
+import com.ryccoatika.core.data.source.local.entity.PhotoMinimalEntity
+import com.ryccoatika.core.data.source.local.entity.UrlsEntity
+import com.ryccoatika.core.data.source.remote.response.*
 import com.ryccoatika.core.domain.model.*
-import com.ryccoatika.core.domain.model.Collection
 
 // ---------------------------------- TOPIC RESPONSE ----------------------------------
-fun TopicResponse.toTopicDomain(): Topic = Topic(
+fun TopicResponse.toTopicDomain(): TopicDetail = TopicDetail(
     id = this.id ?: "undefined",
     slug = this.slug ?: "undefined",
     title = this.title ?: "undefined",
@@ -21,6 +23,11 @@ fun TopicResponse.toTopicDomain(): Topic = Topic(
     owners = this.owners.toListUserDomain(),
     coverPhoto = this.coverPhoto.toPhotoMinimalDomain()
 )
+fun TopicResponse.toTopicMinimalDomain(): TopicMinimal = TopicMinimal(
+    id = this.id ?: "undefined",
+    title = this.title ?: "undefined",
+    coverPhoto = this.coverPhoto.toPhotoMinimalDomain()
+)
 
 // ---------------------------------- RELATED COLLECTION RESPONSE ----------------------------------
 fun RelatedCollectionResponse?.toRelatedCollectionDomain(): RelatedCollection = RelatedCollection(
@@ -29,9 +36,6 @@ fun RelatedCollectionResponse?.toRelatedCollectionDomain(): RelatedCollection = 
     results = this?.results.toListCollectionDomain()
 )
 
-fun List<RelatedCollectionResponse>?.toListRelatedCollectionDomain(): List<RelatedCollection> =
-    this?.map { it.toRelatedCollectionDomain() } ?: listOf()
-
 // ---------------------------------- URL RESPONSE ----------------------------------
 fun UrlsResponse?.toUrlsDomain(): Urls = Urls(
     raw = this?.raw ?: "",
@@ -39,6 +43,22 @@ fun UrlsResponse?.toUrlsDomain(): Urls = Urls(
     regular = this?.regular ?: "",
     small = this?.small ?: "",
     thumb = this?.thumb ?: ""
+)
+
+fun Urls.toUrlsEntity(): UrlsEntity = UrlsEntity(
+    raw = raw,
+    full = full,
+    regular = regular,
+    small = small,
+    thumb = thumb
+)
+
+fun UrlsEntity.toUrlsDomain(): Urls = Urls(
+    raw = raw,
+    full = full,
+    regular = regular,
+    small = small,
+    thumb = thumb
 )
 
 // ---------------------------------- TAG RESPONSE ----------------------------------
@@ -82,13 +102,13 @@ fun LinksCollectionResponse?.toLinksCollectionDomain(): LinksCollection = LinksC
 
 // ---------------------------------- USER RESPONSE ----------------------------------
 
-fun UserResponse.ProfileImageResponse?.toProfileImageDomain(): User.ProfileImage = User.ProfileImage(
+fun UserResponse.ProfileImageResponse?.toProfileImageDomain(): ProfileImage = ProfileImage(
     small = this?.small ?: "",
     medium = this?.medium ?: "",
     large = this?.large ?: ""
 )
 
-fun UserResponse?.toUserDomain(): User = User(
+fun UserResponse?.toUserDomain(): UserDetail = UserDetail(
     id = this?.id ?: "undefined",
     updatedAt = this?.updatedAt ?: "undefined",
     username = this?.username ?: "undefined",
@@ -108,26 +128,65 @@ fun UserResponse?.toUserDomain(): User = User(
     acceptedTos = this?.acceptedTos ?: false
 )
 
-fun List<UserResponse>?.toListUserDomain(): List<User> = this?.map { it.toUserDomain() } ?: listOf()
+fun UserResponse?.toUserMinimalDomain(): UserMinimal = UserMinimal(
+    id = this?.id ?: "undefined",
+    username = this?.username ?: "undefined",
+    name = this?.name ?: "undefined",
+    profileImage = this?.profileImageResponse.toProfileImageDomain()
+)
+
+fun List<UserResponse>?.toListUserDomain(): List<UserDetail> = this?.map { it.toUserDomain() } ?: listOf()
 
 // ---------------------------------- PHOTO MINIMAL RESPONSE ----------------------------------
 
 fun PhotoMinimalResponse?.toPhotoMinimalDomain(): PhotoMinimal = PhotoMinimal(
     id = this?.id ?: "undefined",
-    createdAt = this?.createdAt ?: "undefined",
-    updatedAt = this?.updatedAt ?: "undefined",
-    promotedAt = this?.promotedAt ?: "undefined",
     width = this?.width ?: 0,
     height = this?.height ?: 0,
     color = this?.color ?: "undefined",
-    blurHash = this?.blurHash ?: "undefined",
     description = this?.description ?: "undefined",
     altDescription = this?.altDescription ?: "undefined",
-    urls = this?.urls.toUrlsDomain(),
-    links = this?.links.toLinksPhotoDomain(),
-    likes = this?.likes ?: 0,
-    likedByUser = this?.likedByUser ?: false,
-    user = this?.user.toUserDomain()
+    urls = this?.urls.toUrlsDomain()
+)
+
+fun PhotoMinimal.toPhotoMinimalEntity(): PhotoMinimalEntity = PhotoMinimalEntity(
+    id = id,
+    width = width,
+    height = height,
+    color = color,
+    description = description,
+    altDescription = altDescription,
+    urls = urls.toUrlsEntity()
+)
+
+fun PhotoMinimalEntity.toPhotoMinimalDomain(): PhotoMinimal = PhotoMinimal(
+    id = id,
+    width = width,
+    height = height,
+    color = color,
+    description = description,
+    altDescription = altDescription,
+    urls = urls.toUrlsDomain()
+)
+
+fun PhotoMinimal.toPhotoHistoryEntity(): PhotoHistoryEntity = PhotoHistoryEntity(
+    id = id,
+    width = width,
+    height = height,
+    color = color,
+    description = description,
+    altDescription = altDescription,
+    urls = urls.toUrlsEntity()
+)
+
+fun PhotoHistoryEntity.toPhotoMinimalDomain(): PhotoMinimal = PhotoMinimal(
+    id = id,
+    width = width,
+    height = height,
+    color = color,
+    description = description,
+    altDescription = altDescription,
+    urls = urls.toUrlsDomain()
 )
 
 // ---------------------------------- PHOTO DETAIL RESPONSE ----------------------------------
@@ -174,14 +233,24 @@ fun PhotoDetailResponse.toPhotoDetailDomain(): PhotoDetail = PhotoDetail(
     exif = this.exif.toExifDomain(),
     location = this.location.toLocationDomain(),
     tags = this.tags.toListTagDomain(),
-    relatedCollections = this.relatedCollectionResponse.toListRelatedCollectionDomain(),
+    relatedCollections = this.relatedCollectionResponse.toRelatedCollectionDomain(),
     views = this.views ?: 0,
     downloads = this.downloads ?: 0
 )
 
+fun PhotoDetail.toPhotoMinimal(): PhotoMinimal = PhotoMinimal(
+    id = this.id,
+    width = this.width,
+    height = this.height,
+    color = this.color,
+    description = this.description,
+    altDescription = this.altDescription,
+    urls = this.urls
+)
+
 // ---------------------------------- COLLECTION RESPONSE ----------------------------------
 
-fun CollectionResponse.toCollectionDomain(): Collection = Collection(
+fun CollectionResponse.toCollectionDomain(): CollectionDetail = CollectionDetail(
     id = this.id ?: "undefined",
     title = this.title ?: "undefined",
     description = this.description ?: "undefined",
@@ -199,5 +268,12 @@ fun CollectionResponse.toCollectionDomain(): Collection = Collection(
     coverPhoto = this.coverPhoto.toPhotoMinimalDomain()
 )
 
-fun List<CollectionResponse>?.toListCollectionDomain(): List<Collection> =
+fun CollectionResponse.toCollectionMinimalDomain(): CollectionMinimal = CollectionMinimal(
+    id = this.id ?: "undefined",
+    title = this.title ?: "undefined",
+    totalPhotos = this.totalPhotos ?: 0,
+    coverPhoto = this.coverPhoto.toPhotoMinimalDomain()
+)
+
+fun List<CollectionResponse>?.toListCollectionDomain(): List<CollectionDetail> =
     this?.map { it.toCollectionDomain() } ?: listOf()

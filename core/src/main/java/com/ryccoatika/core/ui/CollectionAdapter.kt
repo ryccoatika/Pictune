@@ -5,53 +5,49 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.bumptech.glide.Glide
 import com.ryccoatika.core.R
-import com.ryccoatika.core.domain.model.Collection
-import com.ryccoatika.core.utils.BlurHashDecoder
+import com.ryccoatika.core.domain.model.CollectionMinimal
+import com.ryccoatika.core.utils.getAspectRatio
+import com.ryccoatika.core.utils.loadBlurredImage
+import com.ryccoatika.core.utils.setHeightAsRatio
 import kotlinx.android.synthetic.main.item_list_collections.view.*
 
 class CollectionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val collections = mutableListOf<Collection?>()
-    private var onClickListener: ((Collection) -> Unit)? = null
+    private val collections = mutableListOf<CollectionMinimal?>()
+    private var onClickListener: ((CollectionMinimal) -> Unit)? = null
 
-    fun setCollections(collections: List<Collection>) {
+    fun setCollections(collections: List<CollectionMinimal>?) {
+        if (collections == null) return
         this.collections.clear()
         this.collections.addAll(collections)
         notifyDataSetChanged()
     }
 
-    fun insertCollections(collections: List<Collection>) {
+    fun insertCollections(collections: List<CollectionMinimal>?) {
+        if (collections == null) return
         this.collections.addAll(collections)
         notifyDataSetChanged()
     }
 
-    fun setOnClickListener(listener: (Collection) -> Unit) {
+    fun setOnClickListener(listener: (CollectionMinimal) -> Unit) {
         this.onClickListener = listener
     }
 
     inner class LoadingViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     inner class CollectionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bindData(collection: Collection) {
+        fun bindData(collection: CollectionMinimal) {
             with (itemView) {
                 val coverPhoto = collection.coverPhoto
-                val imageRatio = coverPhoto.height.toDouble().div(coverPhoto.width.toDouble())
-                collection_image.layoutParams.apply {
-                    height = (width.toDouble() * imageRatio).toInt()
-                    collection_image.layoutParams = this
+                user_image.setHeightAsRatio(coverPhoto.getAspectRatio)
+                user_image.loadBlurredImage(coverPhoto.urls.thumb, coverPhoto.color)
+                user_image.contentDescription = coverPhoto.altDescription
 
-                    collection_image.setImageBitmap(
-                        BlurHashDecoder.decode(coverPhoto.blurHash, width, height)
-                    )
+                tv_title.text = collection.title
+                tv_total_photos.text = context.getString(R.string.total_photos, collection.totalPhotos)
 
-                    Glide.with(context)
-                        .load(coverPhoto.urls.thumb)
-                        .into(collection_image)
-
-                    setOnClickListener { onClickListener?.invoke(collection) }
-                }
+                setOnClickListener { onClickListener?.invoke(collection) }
             }
         }
     }
@@ -69,14 +65,14 @@ class CollectionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    override fun getItemCount(): Int = collections.size
-
     override fun getItemViewType(position: Int): Int {
-        return when (collections[position]) {
-            null -> Type.Loading.ordinal
-            else -> Type.Data.ordinal
-        }
+        return if (collections[position] == null)
+            Type.Loading.ordinal
+        else
+            Type.Data.ordinal
     }
+
+    override fun getItemCount(): Int = collections.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
@@ -84,6 +80,8 @@ class CollectionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             else -> (holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams).isFullSpan = true
         }
     }
+
+    override fun getItemId(position: Int): Long = position.toLong()
 
     fun showLoading() {
         collections.add(null)

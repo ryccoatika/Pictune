@@ -5,51 +5,46 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.bumptech.glide.Glide
 import com.ryccoatika.core.R
-import com.ryccoatika.core.domain.model.Topic
-import com.ryccoatika.core.utils.BlurHashDecoder
+import com.ryccoatika.core.domain.model.TopicMinimal
+import com.ryccoatika.core.utils.getAspectRatio
+import com.ryccoatika.core.utils.loadBlurredImage
+import com.ryccoatika.core.utils.setHeightAsRatio
 import kotlinx.android.synthetic.main.item_list_topic.view.*
 
 class TopicAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val topics = mutableListOf<Topic?>()
-    private var onClickListener: ((Topic) -> Unit)? = null
+    private val topics = mutableListOf<TopicMinimal?>()
+    private var onClickListener: ((TopicMinimal) -> Unit)? = null
 
-    fun setTopics(topics: List<Topic>) {
+    fun setTopics(topics: List<TopicMinimal>?) {
+        if (topics == null) return
         this.topics.clear()
         this.topics.addAll(topics)
         notifyDataSetChanged()
     }
 
-    fun insertTopics(topics: List<Topic>) {
+    fun insertTopics(topics: List<TopicMinimal>?) {
+        if (topics == null) return
         this.topics.addAll(topics)
         notifyDataSetChanged()
     }
 
-    fun setOnClickListener(listener: (Topic) -> Unit) {
+    fun setOnClickListener(listener: (TopicMinimal) -> Unit) {
         this.onClickListener = listener
     }
 
     inner class LoadingViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     inner class TopicViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bindData(topic: Topic) {
+        fun bindData(topic: TopicMinimal) {
             with(itemView) {
                 val coverPhoto = topic.coverPhoto
-                val imageRatio = coverPhoto.height.toDouble().div(coverPhoto.width.toDouble())
-                topic_image.layoutParams.apply {
-                    height = (width.toDouble() * imageRatio).toInt()
-                    topic_image.layoutParams = this
 
-                    topic_image.setImageBitmap(
-                        BlurHashDecoder.decode(coverPhoto.blurHash, width, height)
-                    )
+                topic_image.setHeightAsRatio(coverPhoto.getAspectRatio)
+                topic_image.loadBlurredImage(coverPhoto.urls.thumb, coverPhoto.color)
 
-                    Glide.with(context)
-                        .load(coverPhoto.urls.thumb)
-                        .into(topic_image)
-                }
+                tv_title.text = topic.title
 
                 setOnClickListener { onClickListener?.invoke(topic) }
             }
