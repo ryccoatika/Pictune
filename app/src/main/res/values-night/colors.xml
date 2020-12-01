@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffffff</color>
-    <color name="colorOnPrimary">#ffffff</color>
-    <color name="colorPrimaryDark">#000</color>
-    <color name="colorAccent">#ffffff</color>
-    <color name="colorSecondary">#000</color>
-    <color name="colorBackground">#000000</color>
-    <color name="colorSurface">#000000</color>
-    <color name="colorOnSurface">#ffffff</color>
-    <color name="colorSecondaryAlpha">#99000000</color>
-
-    <color name="colorText">#ffffff</color>
-    <color name="colorLogo">#ffffff</color>
+    <color name="grey">#cccccc</color>
 </resources>

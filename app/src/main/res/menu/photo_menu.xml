@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+            android:id="@+id/menu_open_link"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/ic_open_browser_white"
+            android:title="@string/open_link" />
+    <item
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/ic_share_white"
+            android:title="@string/share">
+        <menu>
+            <item
+                    android:title="@string/share_link"
+                    android:id="@+id/menu_share_link" />
+            <item
+                    android:title="@string/share_image"
+                    android:id="@+id/menu_share_image" />
+        </menu>
+    </item>
+</menu>

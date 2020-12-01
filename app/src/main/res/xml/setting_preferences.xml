@@ -3,67 +3,70 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory
             app:iconSpaceReserved="false"
-            app:title="General">
+            app:title="@string/general">
         <Preference
                 app:iconSpaceReserved="false"
                 app:key="@string/key_auto_wallpaper"
-                app:title="@string/text_auto_wallpaper"/>
-        <SwitchPreference
-                app:title="@string/text_night_mode"
+                app:title="@string/auto_wallpaper" />
+        <ListPreference
+                app:title="@string/theme"
+                app:key="@string/key_theme"
+                app:entries="@array/theme_entries"
+                app:entryValues="@array/theme_values"
+                app:defaultValue="@string/default_theme_value"
                 app:allowDividerAbove="true"
-                app:key="@string/key_night_mode_switch"
-                app:iconSpaceReserved="false"/>
+                app:iconSpaceReserved="false" />
         <Preference
                 app:iconSpaceReserved="false"
                 app:allowDividerAbove="true"
                 app:key="@string/key_clear_cache"
-                app:title="@string/text_clear_cache"/>
-        <Preference
-                app:iconSpaceReserved="false"
-                app:allowDividerAbove="true"
-                app:key="@string/key_clear_data"
-                app:title="@string/text_clear_data"/>
-    </PreferenceCategory>
-    <PreferenceCategory
-        app:iconSpaceReserved="false"
-        app:title="@string/text_support_development">
-        <Preference
-            app:iconSpaceReserved="false"
-            app:title="@string/text_rate_this_app"
-            app:key="@string/key_rate_app"
-            app:summary="@string/text_rate_app_summary"/>
-        <Preference
-            app:iconSpaceReserved="false"
-            app:allowDividerAbove="true"
-            app:title="@string/text_report_bugs"
-            app:key="@string/key_report_bugs"
-            app:summary="@string/text_report_bugs_summary"/>
+                app:title="@string/clear_cache" />
     </PreferenceCategory>
     <PreferenceCategory
             app:iconSpaceReserved="false"
-            app:title="@string/text_about">
+            app:title="@string/support_development">
         <Preference
                 app:iconSpaceReserved="false"
-                app:title="@string/text_author"
-                app:summary="@string/text_author_summary"
-                app:key="@string/key_author"/>
+                app:title="@string/rate_this_app"
+                app:key="@string/key_rate_app"
+                app:summary="@string/rate_app_summary" />
         <Preference
                 app:iconSpaceReserved="false"
                 app:allowDividerAbove="true"
-                app:title="@string/text_powered_by_unsplash"
-                app:summary="@string/text_powered_by_summary"
-                app:key="@string/key_unsplash_page"/>
+                app:title="@string/report_bugs"
+                app:key="@string/key_report_bugs"
+                app:summary="@string/report_bugs_summary" />
+    </PreferenceCategory>
+    <PreferenceCategory
+            app:iconSpaceReserved="false"
+            app:title="@string/about">
+        <Preference
+                app:iconSpaceReserved="false"
+                app:title="@string/author"
+                app:summary="@string/author_summary"
+                app:key="@string/key_author" />
+        <Preference
+                app:iconSpaceReserved="false"
+                app:allowDividerAbove="true"
+                app:title="@string/powered_by_unsplash"
+                app:summary="@string/powered_by_summary"
+                app:key="@string/key_unsplash_page" />
         <Preference
                 app:iconSpaceReserved="false"
                 app:allowDividerAbove="true"
                 app:key="@string/key_github_page"
-                app:summary="@string/text_github_summary"
-                app:title="@string/text_github"/>
+                app:summary="@string/github_summary"
+                app:title="@string/github" />
+        <Preference
+                app:iconSpaceReserved="false"
+                app:allowDividerAbove="true"
+                app:key="@string/key_licenses"
+                app:title="@string/licenses" />
         <Preference
                 app:iconSpaceReserved="false"
                 app:allowDividerAbove="true"
                 app:summary="1.0.0"
                 app:key="@string/key_app_version"
-                app:title="@string/text_app_version"/>
+                app:title="@string/app_version" />
     </PreferenceCategory>
 </PreferenceScreen>

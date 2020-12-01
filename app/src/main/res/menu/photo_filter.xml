@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+            android:icon="@drawable/ic_sort_white"
+            android:contentDescription="@string/filter"
+            app:showAsAction="always"
+            android:title="@string/filter">
+        <menu>
+            <item
+                    android:id="@+id/filter_latest"
+                    android:title="@string/latest" />
+            <item
+                    android:id="@+id/filter_popular"
+                    android:title="@string/popular" />
+            <item
+                    android:id="@+id/filter_oldest"
+                    android:title="@string/oldest" />
+        </menu>
+    </item>
+</menu>

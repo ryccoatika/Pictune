@@ -4,22 +4,22 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
             android:id="@+id/nav_home"
-            android:title="@string/text_home"
-            android:icon="@drawable/ic_home_black_24dp"
-            app:showAsAction="ifRoom"/>
+            android:title="@string/home"
+            android:icon="@drawable/ic_home_black"
+            app:showAsAction="ifRoom" />
     <item
             android:id="@+id/nav_search"
-            android:title="@string/text_search"
-            android:icon="@drawable/ic_search_white_24dp"
-            app:showAsAction="ifRoom"/>
+            android:title="@string/search"
+            android:icon="@drawable/ic_search_white"
+            app:showAsAction="ifRoom" />
     <item
             android:id="@+id/nav_favorite"
-            android:title="@string/text_favorite"
-            android:icon="@drawable/ic_favorite_black_24dp"
-            app:showAsAction="ifRoom"/>
+            android:title="@string/favorite"
+            android:icon="@drawable/ic_favorite_black"
+            app:showAsAction="ifRoom" />
     <item
             android:id="@+id/nav_settings"
-            android:title="@string/text_settings"
-            android:icon="@drawable/ic_settings_black_24dp"
-            app:showAsAction="ifRoom"/>
+            android:title="@string/settings"
+            android:icon="@drawable/ic_settings_black"
+            app:showAsAction="ifRoom" />
 </menu>

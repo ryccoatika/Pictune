@@ -1,50 +1,26 @@
 package com.ryccoatika.pictune.favorite
 
-import android.content.Context
-import android.content.res.ColorStateList
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.textview.MaterialTextView
+import com.ryccoatika.core.ui.PhotoAdapter
 import com.ryccoatika.pictune.R
-import com.ryccoatika.pictune.adapter.UnsplashPhotoGridAdapter
-import kotlinx.android.synthetic.main.fragment_favorite.*
+import com.ryccoatika.pictune.photo.detail.PhotoDetailActivity
+import kotlinx.android.synthetic.main.fragment_photo.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-/**
- * A simple [Fragment] subclass.
- */
 class FavoriteFragment : Fragment() {
 
-    companion object {
-        fun changeFavoriteButtonColor(isFavorite: Boolean, imageView: ImageView) {
-            if (isFavorite) {
-                imageView.setImageDrawable(ContextCompat.getDrawable(imageView.context, R.drawable.ic_favorite_black_24dp))
-                imageView.imageTintList = ColorStateList.valueOf(imageView.context.getColor(R.color.colorPrimary))
-            } else {
-                imageView.setImageDrawable(ContextCompat.getDrawable(imageView.context, R.drawable.ic_favorite_border_black_24dp))
-                imageView.imageTintList = ColorStateList.valueOf(imageView.context.getColor(R.color.colorPrimary))
-            }
-        }
-    }
-
-    class FavoriteViewModelProvider(val context: Context): ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return (FavoriteViewModel(context) as T)
-        }
-    }
-
-    private val viewModel: FavoriteView by lazy {
-        ViewModelProvider(this, FavoriteViewModelProvider(requireContext())).get(FavoriteViewModel::class.java)
-    }
-    private val photosAdapter = UnsplashPhotoGridAdapter()
+    private val photoAdapter: PhotoAdapter = PhotoAdapter()
+    private val viewModel: FavoriteViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,63 +30,73 @@ class FavoriteFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_favorite, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        (activity as AppCompatActivity).supportActionBar?.hide()
-        photosAdapter.setHasStableIds(true)
-        favorite_rv.adapter = photosAdapter
-        favorite_rv.setHasFixedSize(true)
+        if (activity != null) {
+            (requireActivity() as AppCompatActivity).supportActionBar?.hide()
 
-        viewModel.state.observe(viewLifecycleOwner, Observer { state ->
-            when (state) {
-                is FavoriteViewState.Loading -> {
-                    showWarning(false)
-                    photosAdapter.photos.clear()
-                    if (!favorite_swipe_refresh.isRefreshing)
-                        favorite_pb.visibility = View.VISIBLE
-                }
-                is FavoriteViewState.SuccessGetFavorites -> {
-                    showWarning(state.response.isEmpty())
-                    favorite_pb.visibility = View.INVISIBLE
-                    favorite_swipe_refresh.isRefreshing = false
-                    state.response.forEach {
-                        viewModel.getUnsplashPhotoFromInternet(it.photoId)
+            photoAdapter.setHasStableIds(true)
+
+            photoAdapter.setOnClickListener {
+                val toDetail = Intent(requireContext(), PhotoDetailActivity::class.java)
+                toDetail.putExtra(PhotoDetailActivity.EXTRA_PHOTO_ID, it.id)
+                startActivity(toDetail)
+            }
+
+            with(rv_photos) {
+                setHasFixedSize(true)
+                layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                adapter = photoAdapter
+            }
+
+            viewModel.viewState.observe(viewLifecycleOwner) { state ->
+                when (state) {
+                    is FavoriteViewState.Error -> {
+                        swipe_refresh.isRefreshing = false
+                        rv_photos.isVisible = false
+                        view_loading.isVisible = false
+                        view_empty.isVisible = false
+                        view_error.isVisible = true
+                        view_error.findViewById<MaterialTextView>(R.id.tv_error).text =
+                            state.message ?: getString(R.string.something_went_wrong)
+                    }
+                    // discover
+                    is FavoriteViewState.Loading -> {
+                        if (!swipe_refresh.isRefreshing)
+                            view_loading.isVisible = true
+                        rv_photos.isVisible = false
+                        view_empty.isVisible = false
+                        view_error.isVisible = false
+                    }
+                    is FavoriteViewState.Empty -> {
+                        swipe_refresh.isRefreshing = false
+                        rv_photos.isVisible = false
+                        view_loading.isVisible = false
+                        view_empty.isVisible = true
+                        view_error.isVisible = false
+                    }
+                    is FavoriteViewState.Success -> {
+                        swipe_refresh.isRefreshing = false
+                        rv_photos.isVisible = true
+                        view_loading.isVisible = false
+                        view_empty.isVisible = false
+                        view_error.isVisible = false
+                        photoAdapter.setPhotos(state.data)
                     }
                 }
-                is FavoriteViewState.SuccessGetPhoto -> {
-                    favorite_pb.visibility = View.INVISIBLE
-                    photosAdapter.addPhoto(state.response)
-                }
-                is FavoriteViewState.Error -> {
-                    showWarning(true)
-                    favorite_pb.visibility = View.INVISIBLE
-                    favorite_swipe_refresh.isRefreshing = false
-                    favorite_tv_warning.text = getString(R.string.text_failed_getting_data_try_refresh)
-                    Log.w("190401", FavoriteFragment::class.simpleName, state.error)
-                }
             }
-        })
 
-        favorite_swipe_refresh.setOnRefreshListener {
-            startLoad()
-        }
+            swipe_refresh.setOnRefreshListener {
+                viewModel.getAllFavoritePhotos()
+            }
 
-        startLoad()
-    }
-
-    private fun showWarning(state: Boolean) {
-        if (state) {
-            favorite_rv.visibility = View.INVISIBLE
-            favorite_tv_warning.visibility = View.VISIBLE
-            favorite_tv_warning.text = getString(R.string.text_you_dont_have_favorite)
-        } else {
-            favorite_rv.visibility = View.VISIBLE
-            favorite_tv_warning.visibility = View.INVISIBLE
+            viewModel.getAllFavoritePhotos()
         }
     }
 
-    private fun startLoad() {
-        viewModel.getAllFavoritePhotos()
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.clear()
+        super.onPrepareOptionsMenu(menu)
     }
 }
