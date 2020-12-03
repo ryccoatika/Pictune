@@ -69,4 +69,7 @@ dependencies {
 
     // jetpack datastore
     implementation 'androidx.datastore:datastore-preferences:1.0.0-alpha04'
+
+    // leak canary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
 }
