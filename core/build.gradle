@@ -17,8 +17,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "1.0.1"
 
         buildConfigField "String", "UNSPLASH_ENDPOIN", '"https://api.unsplash.com"'
         buildConfigField "String", "UNSPLASH_ACCESS_KEY", localProperties['unsplashAccessKey']
