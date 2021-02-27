@@ -14,6 +14,7 @@ import com.ryccoatika.core.ui.RecycleViewLoadMoreScroll
 import com.ryccoatika.pictune.R
 import com.ryccoatika.pictune.photo.detail.PhotoDetailActivity
 import com.ryccoatika.pictune.search.activity.SearchFilterDialog
+import com.ryccoatika.pictune.utils.ReviewHelper
 import kotlinx.android.synthetic.main.fragment_photo.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -99,6 +100,7 @@ class SearchPhotoFragment(
                         photoAdapter.setPhotos(state.data)
                         currentPage++
                         scrollListener.isLoading = false
+                        ReviewHelper.launchInAppReview(requireActivity())
                     }
                     // loadmore
                     is SearchPhotoViewState.LoadMoreLoading -> {

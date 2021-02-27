@@ -11,6 +11,7 @@ import com.ryccoatika.core.ui.PhotoAdapter
 import com.ryccoatika.core.ui.RecycleViewLoadMoreScroll
 import com.ryccoatika.pictune.R
 import com.ryccoatika.pictune.photo.detail.PhotoDetailActivity
+import com.ryccoatika.pictune.utils.ReviewHelper
 import kotlinx.android.synthetic.main.activity_topic.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -91,6 +92,7 @@ class TopicActivity : AppCompatActivity() {
                         photoAdapter.setPhotos(state.data)
                         currentPage++
                         scrollListener.isLoading = false
+                        ReviewHelper.launchInAppReview(this)
                     }
 
                     // load more topic photos

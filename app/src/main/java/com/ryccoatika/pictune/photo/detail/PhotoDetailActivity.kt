@@ -24,10 +24,7 @@ import com.ryccoatika.pictune.download.DownloadQualityChooserDialog
 import com.ryccoatika.pictune.photo.zoom.PhotoZoomActivity
 import com.ryccoatika.pictune.search.activity.SearchActivity
 import com.ryccoatika.pictune.user.UserActivity
-import com.ryccoatika.pictune.utils.DownloadManager
-import com.ryccoatika.pictune.utils.PermissionHelper
-import com.ryccoatika.pictune.utils.formattedDate
-import com.ryccoatika.pictune.utils.formattedNumber
+import com.ryccoatika.pictune.utils.*
 import kotlinx.android.synthetic.main.activity_photo_detail.*
 import kotlinx.android.synthetic.main.photo_detail_content.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -161,6 +158,8 @@ class PhotoDetailActivity : AppCompatActivity(), View.OnClickListener {
         btn_download.setOnClickListener(this)
         btn_set_as.setOnClickListener(this)
         photo_image.setOnClickListener(this)
+
+        ReviewHelper.launchInAppReview(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -241,9 +240,11 @@ class PhotoDetailActivity : AppCompatActivity(), View.OnClickListener {
         setWallpaper.setDataAndType(uri, "image/jpeg")
         setWallpaper.putExtra("mimeType", "image/jpeg")
         setWallpaper.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-        startActivity(
-            Intent.createChooser(setWallpaper, getString(R.string.open_with))
-        )
+        ReviewHelper.launchInAppReview(this) {
+            startActivity(
+                Intent.createChooser(setWallpaper, getString(R.string.open_with))
+            )
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

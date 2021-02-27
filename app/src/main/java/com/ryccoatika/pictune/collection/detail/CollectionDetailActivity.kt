@@ -18,6 +18,7 @@ import com.ryccoatika.core.utils.loadProfilePicture
 import com.ryccoatika.pictune.R
 import com.ryccoatika.pictune.photo.detail.PhotoDetailActivity
 import com.ryccoatika.pictune.user.UserActivity
+import com.ryccoatika.pictune.utils.ReviewHelper
 import kotlinx.android.synthetic.main.activity_collection_detail.*
 import kotlinx.android.synthetic.main.collection_detail_content.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -171,6 +172,7 @@ class CollectionDetailActivity : AppCompatActivity(), View.OnClickListener {
         scrollListener.setOnLoadMoreListener {
             viewModel.loadMoreCollectionPhotos(collection.id, currentPage)
         }
+        ReviewHelper.launchInAppReview(this)
     }
 
     override fun onSupportNavigateUp(): Boolean {

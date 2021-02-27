@@ -11,6 +11,7 @@ import com.google.android.material.textview.MaterialTextView
 import com.ryccoatika.core.domain.model.UserDetail
 import com.ryccoatika.core.utils.loadProfilePicture
 import com.ryccoatika.pictune.R
+import com.ryccoatika.pictune.utils.ReviewHelper
 import kotlinx.android.synthetic.main.activity_user.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -111,6 +112,8 @@ class UserActivity : AppCompatActivity() {
         )
         view_pager.adapter = pagerAdapter
         tab_layout.setupWithViewPager(view_pager)
+
+        ReviewHelper.launchInAppReview(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
